@@ -1,0 +1,16 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+/platform-config/target/
+/platform-config/.mvn/
+/platform-eureka/.mvn/
+/platform-eureka/target/
+/platform-gateway/.mvn/
+/platform-monitor/.mvn/
+/platform-monitor/target/

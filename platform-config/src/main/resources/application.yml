@@ -1,0 +1,14 @@
+server:
+  port: 9040
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+#        github上面code的路径要注意
+          uri: https://git.coding.net/zhengxingtao/jaagro-platform-config.git
+          username: zhengxingtao
+          password: tao891224
