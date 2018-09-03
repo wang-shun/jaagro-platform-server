@@ -20,6 +20,7 @@
         <module>platform-eureka</module>
         <module>platform-gateway</module>
         <module>platform-monitor</module>
+        <module>platform-bus</module>
     </modules>
 
 </project>
