@@ -65,7 +65,7 @@ public class AuthZuulFilter extends ZuulFilter {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
             log.warn(currentURI + "：401，令牌无效");
-            ctx.setResponseBody("{\"code\":401,\"msg\":\"令牌无效\",\"data\":\"null\"}");
+            ctx.setResponseBody("{\"statusCode\":401,\"statusMsg\":\"令牌无效\"}");
             //设置返回值json格式
             ctx.getResponse().setContentType("application/json;charset=UTF-8");
             ctx.set("isSuccess", false);

@@ -7,10 +7,5 @@
 *.iml
 out
 gen
-/platform-config/target/
-/platform-config/.mvn/
-/platform-eureka/.mvn/
-/platform-eureka/target/
-/platform-gateway/.mvn/
-/platform-monitor/.mvn/
-/platform-monitor/target/
+*/.mvn
+*/target
