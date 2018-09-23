@@ -41,10 +41,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <docker.image.prefix>zhengxingtao</docker.image.prefix>
-    </properties>
-
     <build>
         <finalName>${name}-${version}</finalName>  <!--最后的包文件名-->
         <plugins>

@@ -74,7 +74,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
-
         <!--jwt-->
         <dependency>
             <groupId>com.auth0</groupId>
@@ -82,11 +81,6 @@
             <version>3.1.0</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <docker.image.prefix>zhengxingtao</docker.image.prefix>
-    </properties>
-
     <build>
         <finalName>${name}-${version}</finalName>  <!--最后的包文件名-->
         <plugins>
@@ -103,6 +97,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
