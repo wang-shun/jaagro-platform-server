@@ -9,5 +9,3 @@ out
 gen
 */.mvn
 */target
-/platform-gateway/src/main/resources/application.yml
-/platform-gateway/src/main/resources/bootstrap.yml
