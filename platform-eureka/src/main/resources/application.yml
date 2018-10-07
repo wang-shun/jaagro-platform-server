@@ -1,3 +1,6 @@
 spring:
   application:
     name: eureka-server
+  cloud:
+    inetutils:
+      ignored-interfaces[0]: docker0
