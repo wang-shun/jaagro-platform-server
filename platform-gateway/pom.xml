@@ -100,7 +100,7 @@
         <profile>
             <id>prod</id>
             <properties>
-                <profileActive>prod1</profileActive>
+                <profileActive>prod</profileActive>
             </properties>
         </profile>
     </profiles>
