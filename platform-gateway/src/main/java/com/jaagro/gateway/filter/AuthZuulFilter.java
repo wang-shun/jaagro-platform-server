@@ -42,7 +42,7 @@ public class AuthZuulFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String token = request.getHeader("token");
-        log.debug("--------" + token);
+        log.info("token --------" + token);
         String currentURI = request.getRequestURI();
         String tokenURI = "/auth/token";
         String swaggerURI = "/v2/api-docs";
