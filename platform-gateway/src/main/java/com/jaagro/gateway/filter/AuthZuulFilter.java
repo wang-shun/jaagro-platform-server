@@ -42,6 +42,7 @@ public class AuthZuulFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String token = request.getHeader("token");
+        log.debug("--------" + token);
         String currentURI = request.getRequestURI();
         String tokenURI = "/auth/token";
         String swaggerURI = "/v2/api-docs";
@@ -53,7 +54,7 @@ public class AuthZuulFilter extends ZuulFilter {
                 currentURI.contains(swaggerURI) ||
                 tokenClient.verifyToken(token);
         //放行
-        if(isPass){
+        if (isPass) {
             //对改请求进行路由
             ctx.setSendZuulResponse(true);
             ctx.setResponseStatusCode(200);
@@ -61,7 +62,7 @@ public class AuthZuulFilter extends ZuulFilter {
             log.info(currentURI + "验证通过");
             ctx.set("isSuccess", true);
             return null;
-        }else{
+        } else {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
             log.warn(currentURI + "：401，令牌无效");
