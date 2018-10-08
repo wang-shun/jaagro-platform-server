@@ -2,6 +2,7 @@ package com.jaagro.gateway.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -38,6 +39,8 @@ public class PreRequestFilter extends ZuulFilter {
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
+        String token = request.getHeader("token");
+        ctx.addZuulRequestHeader("token", token);
         LOG.info("send {} request to {}",request.getMethod(),request.getRequestURL().toString());
         return null;
     }
