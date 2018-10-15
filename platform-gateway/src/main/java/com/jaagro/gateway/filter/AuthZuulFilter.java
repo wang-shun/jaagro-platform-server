@@ -48,7 +48,7 @@ public class AuthZuulFilter extends ZuulFilter {
         String swaggerURI = "/v2/api-docs";
         String verificationCodeURI = "/sendMessage";
         String forgetPasswordURI = "/forgetPassword";
-        String checkCodeURI = "//checkCode";
+        String checkCodeURI = "/checkCode";
 
         //放行条件
         boolean isPass = currentURI.equals(tokenURI) ||
