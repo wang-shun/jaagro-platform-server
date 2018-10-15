@@ -39,6 +39,7 @@ public class PreRequestFilter extends ZuulFilter {
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
+        //将请求头中token放在zuulRequest中
         String token = request.getHeader("token");
         ctx.addZuulRequestHeader("token", token);
         LOG.info("send {} request to {}",request.getMethod(),request.getRequestURL().toString());
