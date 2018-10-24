@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.core.Ordered;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -65,6 +66,10 @@ public class AuthZuulFilter extends ZuulFilter {
             //设值，让其他filter看到这个状态
             log.info(currentURI + "验证通过");
             ctx.set("isSuccess", true);
+            //延长token有效期
+            if (!StringUtils.isEmpty(token)) {
+                tokenClient.postponeToken(token);
+            }
             return null;
         } else {
             ctx.setSendZuulResponse(false);

@@ -17,4 +17,12 @@ public interface TokenClientService {
      */
     @PostMapping("/verifyToken")
     boolean verifyToken(@RequestParam("token") String token);
+
+    /**
+     * 延长token有效期
+     * @param token
+     * @return
+     */
+    @PostMapping("/postponeToken")
+    boolean postponeToken(@RequestParam("token") String token);
 }
