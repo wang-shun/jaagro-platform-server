@@ -13,7 +13,6 @@
         <relativePath>../jaagro-platform-parent/pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
     <modules>
-        <module>platform-config</module>
         <module>platform-eureka</module>
         <module>platform-gateway</module>
         <module>platform-monitor</module>
