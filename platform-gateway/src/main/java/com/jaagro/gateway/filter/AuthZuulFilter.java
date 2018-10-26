@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 请求拦截器，用于验证token
  * @author tony
  */
 public class AuthZuulFilter extends ZuulFilter {
@@ -43,7 +44,6 @@ public class AuthZuulFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String token = request.getHeader("token");
-        log.info("token --------" + token);
         String currentURI = request.getRequestURI();
         String tokenURI = "/auth/token";
         String swaggerURI = "/v2/api-docs";
