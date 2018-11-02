@@ -50,6 +50,7 @@ public class AuthZuulFilter extends ZuulFilter {
         String verificationCodeURI = "/sendMessage";
         String forgetPasswordURI = "/forgetPassword";
         String checkCodeURI = "/checkCode";
+        String wxTokenURI = "/getTokenByWxId";
 
         //放行条件
         boolean isPass = currentURI.equals(tokenURI) ||
@@ -57,6 +58,7 @@ public class AuthZuulFilter extends ZuulFilter {
                 currentURI.contains(swaggerURI) ||
                 currentURI.contains(forgetPasswordURI) ||
                 currentURI.contains(checkCodeURI) ||
+                currentURI.contains(wxTokenURI) ||
                 tokenClient.verifyToken(token);
         //放行
         if (isPass) {
