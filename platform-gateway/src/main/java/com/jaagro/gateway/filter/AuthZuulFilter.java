@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 请求拦截器，用于验证token
  * @author tony
  */
 public class AuthZuulFilter extends ZuulFilter {
@@ -43,13 +44,13 @@ public class AuthZuulFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         String token = request.getHeader("token");
-        log.info("token --------" + token);
         String currentURI = request.getRequestURI();
         String tokenURI = "/auth/token";
         String swaggerURI = "/v2/api-docs";
         String verificationCodeURI = "/sendMessage";
         String forgetPasswordURI = "/forgetPassword";
         String checkCodeURI = "/checkCode";
+        String wxTokenURI = "/getTokenByWxId";
 
         //放行条件
         boolean isPass = currentURI.equals(tokenURI) ||
@@ -57,6 +58,7 @@ public class AuthZuulFilter extends ZuulFilter {
                 currentURI.contains(swaggerURI) ||
                 currentURI.contains(forgetPasswordURI) ||
                 currentURI.contains(checkCodeURI) ||
+                currentURI.contains(wxTokenURI) ||
                 tokenClient.verifyToken(token);
         //放行
         if (isPass) {
