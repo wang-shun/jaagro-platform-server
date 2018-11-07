@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 请求拦截器，用于验证token
+ *
  * @author tony
  */
 public class AuthZuulFilter extends ZuulFilter {
@@ -51,6 +52,7 @@ public class AuthZuulFilter extends ZuulFilter {
         String forgetPasswordURI = "/forgetPassword";
         String checkCodeURI = "/checkCode";
         String wxTokenURI = "/getTokenByWxId";
+        String getWxCode = "/getWxCode";
 
         //放行条件
         boolean isPass = currentURI.equals(tokenURI) ||
@@ -59,6 +61,7 @@ public class AuthZuulFilter extends ZuulFilter {
                 currentURI.contains(forgetPasswordURI) ||
                 currentURI.contains(checkCodeURI) ||
                 currentURI.contains(wxTokenURI) ||
+                currentURI.contains(getWxCode) ||
                 tokenClient.verifyToken(token);
         //放行
         if (isPass) {
