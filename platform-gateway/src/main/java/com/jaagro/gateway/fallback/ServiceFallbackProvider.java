@@ -3,6 +3,8 @@ package com.jaagro.gateway.fallback;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jaagro.gateway.model.ErrorCode;
 import com.jaagro.gateway.model.Msg;
+import com.jaagro.utils.BaseResponse;
+import com.jaagro.utils.ResponseStatusCode;
 import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -47,11 +49,8 @@ public class ServiceFallbackProvider implements ZuulFallbackProvider {
             @Override
             public InputStream getBody() throws IOException {
                 //响应体
-                Msg msg = new Msg();
-                msg.setCode(ErrorCode.MICRO_SERVICE_UNAVAILABLE);
-                msg.setMsg("微服务不可用，请稍后再试");
                 ObjectMapper objectMapper = new ObjectMapper();
-                String content = objectMapper.writeValueAsString(msg);
+                String content = objectMapper.writeValueAsString(BaseResponse.errorInstance(ResponseStatusCode.MICRO_SERVICE_ERROR.getCode(), "服务不可用，请稍后再试"));
                 return new ByteArrayInputStream(content.getBytes());
             }
 

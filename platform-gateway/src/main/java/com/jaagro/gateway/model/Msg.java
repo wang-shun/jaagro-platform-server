@@ -42,8 +42,8 @@ public class Msg<T> implements Serializable{
     @Override
     public String toString() {
         return "Msg{" +
-                "code=" + code +
-                ", msg='" + msg + '\'' +
+                "statusCode=" + code +
+                ", statusMsg='" + msg + '\'' +
                 ", data=" + data +
                 '}';
     }
