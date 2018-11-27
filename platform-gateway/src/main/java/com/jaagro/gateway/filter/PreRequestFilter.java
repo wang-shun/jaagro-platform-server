@@ -1,5 +1,6 @@
 package com.jaagro.gateway.filter;
 
+import com.alibaba.fastjson.JSON;
 import com.jaagro.constant.UserInfo;
 import com.jaagro.gateway.config.RabbitMqConfig;
 import com.jaagro.gateway.model.UserLoginDto;
@@ -63,8 +64,8 @@ public class PreRequestFilter extends ZuulFilter {
                 .setUserName(userInfo.getName())
                 .setUserType(userInfo.getUserType())
                 .setLoginIp(request.getRemoteAddr());
-        rabbitMqTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE, "userLogin.send", userLoginDto);
-        System.out.println(userLoginDto + "加入队列");
+        String userLoginJson = JSON.toJSONString(userLoginDto);
+        rabbitMqTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE, "userLogin.send.queue", userLoginJson);
         return null;
     }
 }
