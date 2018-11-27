@@ -55,6 +55,9 @@ public class PreRequestFilter extends ZuulFilter {
         String token = request.getHeader("token");
         ctx.addZuulRequestHeader("token", token);
         LOG.info("send {} request to {}",request.getMethod(),request.getRequestURL().toString());
+        if(null == token){
+            return null;
+        }
         //插入登录记录
         UserInfo userInfo = tokenClientService.getUserByToken(token);
         UserLoginDto userLoginDto = new UserLoginDto();
@@ -65,7 +68,7 @@ public class PreRequestFilter extends ZuulFilter {
                 .setUserType(userInfo.getUserType())
                 .setLoginIp(request.getRemoteAddr());
         String userLoginJson = JSON.toJSONString(userLoginDto);
-        rabbitMqTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE, "userLogin.send.queue", userLoginJson);
+        rabbitMqTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE, "userLogin.send", userLoginJson);
         return null;
     }
 }
