@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author tony
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Msg<T> implements Serializable{
+public class  Msg<T> implements Serializable{
     private static final long serialVersionUID = -1177183613782210351L;
     private Integer code;
     private String msg;
