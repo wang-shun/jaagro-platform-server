@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.jaagro</groupId>
             <artifactId>platform-common</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <!-- ====================================data注解依赖===================================== -->
         <dependency>
@@ -88,6 +88,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.38</version>
         </dependency>
     </dependencies>
     <profiles>
