@@ -63,7 +63,8 @@ public class PreRequestFilter extends ZuulFilter {
                 .setUserName(userInfo.getName())
                 .setUserType(userInfo.getUserType())
                 .setLoginIp(request.getRemoteAddr());
-        rabbitMqTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE, "userLogin.send.queue", userLoginDto);
+        rabbitMqTemplate.convertAndSend(RabbitMqConfig.TOPIC_EXCHANGE, "userLogin.send", userLoginDto);
+        System.out.println(userLoginDto + "加入队列");
         return null;
     }
 }

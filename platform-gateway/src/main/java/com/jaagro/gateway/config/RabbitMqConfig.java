@@ -46,6 +46,6 @@ public class RabbitMqConfig {
 
     @Bean
     public Binding userLoginSendBindingTopic() {
-        return BindingBuilder.bind(userLoginSendQueue()).to(topicExchange()).with("location.send");
+        return BindingBuilder.bind(userLoginSendQueue()).to(topicExchange()).with("userLogin.send");
     }
 }
