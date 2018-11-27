@@ -1,5 +1,6 @@
 package com.jaagro.gateway.service;
 
+import com.jaagro.constant.UserInfo;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,4 +26,12 @@ public interface TokenClientService {
      */
     @PostMapping("/postponeToken")
     boolean postponeToken(@RequestParam("token") String token);
+
+    /**
+     * token换user
+     * @param token
+     * @return
+     */
+    @PostMapping("/getUserByToken")
+    UserInfo getUserByToken(@RequestParam("token") String token);
 }

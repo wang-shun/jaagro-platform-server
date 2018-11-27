@@ -30,12 +30,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-        <!--&lt;!&ndash; cat监控 &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.dianping.cat</groupId>-->
-            <!--<artifactId>cat-client</artifactId>-->
-            <!--<version>3.0.0</version>-->
-        <!--</dependency>-->
         <!-- 热部署插件 -->
         <dependency>
             <groupId>org.springframework</groupId>

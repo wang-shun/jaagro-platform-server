@@ -18,6 +18,7 @@ public class Swagger2Config {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .host("api.jaagro.com")
                 .apiInfo(apiInfo());
     }
 
