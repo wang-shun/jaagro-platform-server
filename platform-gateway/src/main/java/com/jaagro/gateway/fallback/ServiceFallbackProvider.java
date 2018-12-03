@@ -1,8 +1,6 @@
 package com.jaagro.gateway.fallback;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jaagro.gateway.model.ErrorCode;
-import com.jaagro.gateway.model.Msg;
 import com.jaagro.utils.BaseResponse;
 import com.jaagro.utils.ResponseStatusCode;
 import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
