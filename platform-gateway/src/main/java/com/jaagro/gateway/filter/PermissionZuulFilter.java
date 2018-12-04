@@ -34,7 +34,7 @@ public class PermissionZuulFilter extends ZuulFilter {
         HttpServletRequest request = ctx.getRequest();
         if ((Boolean) ctx.get("isSuccess")) {
             //判断权限
-            System.out.println(request.getRequestURI());
+            System.out.println("~~~~~~~~~进入权限拦截器");
         }
         return null;
     }
