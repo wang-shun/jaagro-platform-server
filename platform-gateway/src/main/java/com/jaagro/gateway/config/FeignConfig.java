@@ -15,6 +15,7 @@ import java.util.Map;
 
 /**
  * 解决feign调用无法携带请求头的问题
+ *
  * @author tony
  */
 @Component
@@ -25,7 +26,6 @@ public class FeignConfig implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate requestTemplate) {
         requestTemplate.header("token", getHeaders(getHttpServletRequest()).get("token"));
-        log.info("当前token: " + getHeaders(getHttpServletRequest()).get("token"));
     }
 
     private HttpServletRequest getHttpServletRequest() {

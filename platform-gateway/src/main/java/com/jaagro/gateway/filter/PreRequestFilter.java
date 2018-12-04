@@ -57,7 +57,6 @@ public class PreRequestFilter extends ZuulFilter {
         LOG.info("send {} request to {}",request.getMethod(),request.getRequestURL().toString());
         UserInfo userInfo = tokenClientService.getUserByToken(token);
 
-        LOG.info("当前userInfo： {}", userInfo );
         if(null == token || null == userInfo){
             return null;
         }
