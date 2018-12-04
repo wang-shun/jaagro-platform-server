@@ -53,6 +53,7 @@ public class AuthZuulFilter extends ZuulFilter {
         String checkCodeURI = "/checkCode";
         String wxTokenURI = "/getTokenByWxId";
         String getWxCode = "/getWxCode";
+        String leagueURI = "/league";
 
         //放行条件
         boolean isPass = currentURI.equals(tokenURI) ||
@@ -62,6 +63,7 @@ public class AuthZuulFilter extends ZuulFilter {
                 currentURI.contains(checkCodeURI) ||
                 currentURI.contains(wxTokenURI) ||
                 currentURI.contains(getWxCode) ||
+                currentURI.contains(leagueURI) ||
                 tokenClient.verifyToken(token);
         //放行
         if (isPass) {
