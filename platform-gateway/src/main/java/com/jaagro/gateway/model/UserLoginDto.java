@@ -34,6 +34,11 @@ public class UserLoginDto implements Serializable {
     private String userName;
 
     /**
+     * 部门名称
+     */
+    private String departmentName;
+
+    /**
      * 用户类型
      */
     private String userType;
