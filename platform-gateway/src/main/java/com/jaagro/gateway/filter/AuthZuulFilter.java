@@ -53,6 +53,8 @@ public class AuthZuulFilter extends ZuulFilter {
         String checkCodeURI = "/checkCode";
         String wxTokenURI = "/getTokenByWxId";
         String getWxCode = "/getWxCode";
+        String leagueURI = "/league";
+        String socialDriver = "/socialDriver";
 
         //放行条件
         boolean isPass = currentURI.equals(tokenURI) ||
@@ -62,6 +64,8 @@ public class AuthZuulFilter extends ZuulFilter {
                 currentURI.contains(checkCodeURI) ||
                 currentURI.contains(wxTokenURI) ||
                 currentURI.contains(getWxCode) ||
+                currentURI.contains(leagueURI) ||
+                currentURI.contains(socialDriver) ||
                 tokenClient.verifyToken(token);
         //放行
         if (isPass) {
@@ -69,7 +73,6 @@ public class AuthZuulFilter extends ZuulFilter {
             ctx.setSendZuulResponse(true);
             ctx.setResponseStatusCode(200);
             //设值，让其他filter看到这个状态
-            log.info(currentURI + "验证通过");
             ctx.set("isSuccess", true);
             //延长token有效期
             if (!StringUtils.isEmpty(token)) {
@@ -79,7 +82,7 @@ public class AuthZuulFilter extends ZuulFilter {
         } else {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
-            log.warn(currentURI + "：401，令牌无效");
+            log.debug("R AuthZuulFilter error token: {}", token);
             ctx.setResponseBody("{\"statusCode\":401,\"statusMsg\":\"令牌无效\"}");
             //设置返回值json格式
             ctx.getResponse().setContentType("application/json;charset=UTF-8");

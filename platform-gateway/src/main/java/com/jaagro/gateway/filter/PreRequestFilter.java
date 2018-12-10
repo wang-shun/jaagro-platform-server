@@ -55,11 +55,11 @@ public class PreRequestFilter extends ZuulFilter {
         String token = request.getHeader("token");
         ctx.addZuulRequestHeader("token", token);
         LOG.info("send {} request to {}",request.getMethod(),request.getRequestURL().toString());
-        if(null == token){
+        UserInfo userInfo = tokenClientService.getUserByToken(token);
+
+        if(null == token || null == userInfo){
             return null;
         }
-        //插入登录记录
-        UserInfo userInfo = tokenClientService.getUserByToken(token);
         UserLoginDto userLoginDto = new UserLoginDto();
         userLoginDto
                 .setLoginDate(new Date())
